@@ -1,0 +1,8 @@
+<h1>Search results:</h1>
+<div ng-repeat="beer in beers">
+  <h2>{{beer.name}}</h2>
+  <h3>{{ beer.breweries[0].name }}</h3>
+  <h4>{{ beer.style.shortName }}</h4>
+  <img ng-src="{{ beer.labels.medium }}" />
+  <p>{{ beer.description }}</p>
+</div>
