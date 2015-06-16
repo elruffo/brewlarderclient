@@ -15,7 +15,14 @@ angular.module('brewlarderclientApp')
       'Karma'
     ];
     $scope.title = 'This Month\'s Bestsellers';
-    search.success(function(data) {
-      $scope.beers = data.data;
-    });
+    $scope.beers = [];
+    $scope.search_beers = function() {
+      search.success(function(data) {
+        $scope.title = 'This Month\'s';
+        $scope.beers = data.data;
+        console.log($scope.title);
+        console.log($scope.beers);
+      });
+    };
+
   });
