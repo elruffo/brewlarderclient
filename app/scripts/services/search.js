@@ -3,12 +3,11 @@
  */
 'use strict';
 
-angular.module('brewlarderclientApp').factory('search', ['$http', function($http) {
-  return $http.get('http://localhost:8000/en/search?type=beer&q=orval&withBreweries=Y', {withCredentials: true})
-    .success(function(data) {
-      return data;
-    })
-    .error(function(err) {
-      return err;
-    });
-}]);
+
+angular.module('beerResource', ['ngResource'])
+  .factory('BeerResource', ['$resource',
+    function($resource){
+      return $resource('http://localhost:8000/en/search?type=beer&q=:q&withBreweries=Y', {}, {
+        query: {method:'GET', params:{q:'q'}, isArray:true}
+      });
+    }]);
